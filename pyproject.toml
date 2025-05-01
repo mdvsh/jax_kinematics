@@ -1,0 +1,27 @@
+[project]
+name = "jax_kinematics"
+version = "0.1.0"
+description = "Robot kinematics implemented in JAX"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE.txt" }
+keywords = ["kinematics", "jax", "robotics", "ik", "fk"]
+
+dependencies = [
+    'jax>=0.4.13',
+    'jaxlib>=0.4.13',
+    'numpy>=1.24',
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
