@@ -1,10 +1,15 @@
-from jax_kinematics.transforms import (
-    quaternion_to_matrix,
-    matrix_to_quaternion,
-    Transform3d,
-)
+"""
+JAX Kinematics: A high-performance kinematics library for robotics.
+
+This library provides mathematically rigorous, JIT-compilable implementations
+of spatial transformations and kinematics computations using JAX.
+"""
 
 import jax
 jax.config.update("jax_enable_x64", True)
 
-__version__ = "0.1.0"                 
+# Import core modules
+from . import transforms
+
+__version__ = "0.1.0"
+__all__ = ["transforms"]                 

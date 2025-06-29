@@ -1,19 +1,18 @@
-from importlib import import_module
+"""
+JAX-based transforms library for robotics and computer vision.
 
-from .rotation import (
-    quaternion_to_matrix,
-    matrix_to_quaternion,
-    normalize_quaternions,
-)
+This module provides mathematically rigorous, JIT-compilable implementations of:
+- SO(3) rotations (so3 module) 
+- SE(3) rigid body transforms (se3 module)
 
-# re-export the sub-module itself
-transform = import_module(".transform", package=__name__)
-Transform3d = transform.Transform3d
+All functions are pure, stateless, and designed for high-performance computation.
+"""
+
+# Core Lie group modules
+from . import so3
+from . import se3
 
 __all__ = [
-    "quaternion_to_matrix",
-    "matrix_to_quaternion",
-    "normalize_quaternions",
-    "transform",
-    "Transform3d",
+    "so3",
+    "se3",
 ]
