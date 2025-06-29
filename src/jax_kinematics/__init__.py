@@ -6,12 +6,11 @@ of spatial transformations and kinematics computations using JAX.
 """
 
 import jax
+
 jax.config.update("jax_enable_x64", True)
 
 # Import core modules
-from . import transforms
-from . import core
-from . import io
+from . import chain, core, io, transforms
 
 __version__ = "0.1.0"
-__all__ = ["transforms", "core", "io"]                 
+__all__ = ["transforms", "core", "io", "chain"]

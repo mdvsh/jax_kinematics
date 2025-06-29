@@ -27,3 +27,18 @@ build-backend = "setuptools.build_meta"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
+
+[tool.black]
+line-length = 120
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "I", "B"]  # E: pycodestyle, F: pyflakes, I: isort, B: bugbear
+ignore = ["E203", "E501"]
+exclude = ["__pycache__"]
+
+[tool.ruff.format]
+quote-style = "double"
+preview = true

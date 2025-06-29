@@ -1,6 +1,30 @@
 # Changelog
 
 
+## [0.1.1] - 2025-06-28
+
+### Added
+- `chain.py` with Forward Kinematics and Jacobian computation
+  - Works on any `RobotModel`, returns per-link SE(3) poses
+  - Fully JIT-compilable (`forward_kinematics_world`, `jacobian`)
+- New Jacobian test-suite:
+  - Deterministic “zero + non-zero” Panda checks
+  - JIT-compatibility test
+  - Numerical derivative verification against `jax.jacrev`
+  - Property test over random joint configurations (finite-value & variation guard)
+
+### Changed
+- **`so3.log()`**: replaced small-angle branch with first-order series  
+  for numerically stable gradients at θ ≈ 0
+- **`chain.jacobian()`**
+  - Removed superfluous transpose; output is now `(6, n_dof)`
+  - Added `jnp.nan_to_num` post-processing to zero out singular NaN/Inf entries
+
+### Fixed
+- Jacobian NaNs and shape mismatch at Panda zero pose (all tests green)
+- Rare overflow in `se3.log()` for cotangent term near θ ≈ 0
+
+
 ## [0.1.0] - 2025-06-28
 
 ### Added
